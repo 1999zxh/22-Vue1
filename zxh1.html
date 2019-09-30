@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        #demo{width: 700px;margin: 0 auto;}
+        ul{width:300px}
+        ul li{list-style-type:none;background:#5ceeee;margin-top:10px;}
+        ul li img{vertical-align:middle;}
+        p{display:inline;margin-left:5px}
+        .border-gray{border:3px solid #000000}
+    </style>
+</head>
+<body>
+<div id="demo">
+    <div  style="float:left;" >
+        <img :src="img" width="300" height="300">
+    </div>
+    <div style="float:left;">
+        <ul>
+
+            <span>颜色</span>
+            <li   v-for="(item,index) in ary" :key="index" @click="doClick(index)" :class="{'border-gray':current==index}">
+                <img :src="item.url" width="50" height="50"><p v-html="item.name"></p>
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+<script>
+    new Vue({
+        el:'#demo',
+        data(){
+            return{
+                ary:[
+                    {url:'https://img.alicdn.com/imgextra/i4/1917047079/O1CN015ywj1J22AEJ9AVaFA_!!2-item_pic.png_430x430q90.jpg',name:'<span style="font-size:12px">金色</span>'},
+                    {url:'https://img.alicdn.com/imgextra/i2/1917047079/O1CN01k2UI0P22AEJ8QvtJR_!!2-item_pic.png_430x430q90.jpg',name:'<span style="font-size:12px">暗夜绿色</span>'},
+                    {url:'https://img.alicdn.com/imgextra/i1/1917047079/O1CN01yKZi4a22AEJ6PraJc_!!2-item_pic.png_430x430q90.jpg',name:'<span style="font-size:12px">银色</span>'}
+
+                ],
+                current:0,
+                img:'https://img.alicdn.com/imgextra/i4/1917047079/O1CN015ywj1J22AEJ9AVaFA_!!2-item_pic.png_430x430q90.jpg'
+            }
+        },
+        methods:{
+            doClick(index){
+                this.current=index;
+                this.img=this.ary[index].url;
+            }
+        }
+    })
+</script>
+</body>
+</html>

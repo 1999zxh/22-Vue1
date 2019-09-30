@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="demo">
+    <my-input :inputvalue="V1"></my-input>
+</div>
+<script>
+    var myInput={
+        template:`<div><button>+</button><input type="text" :value="inputvalue"><button>-</button></div>`,
+        props:['inputvalue']
+    }
+    new Vue({
+        el:'#demo',
+        data(){
+            return{V1:1,V2:2}
+        },
+        components: {'my-input' :myInput}
+    })
+</script>
+</body>
+</html>
